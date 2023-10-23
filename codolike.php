@@ -63,12 +63,12 @@ function codolike_after_notify_insert() {
 \CODOF\Hook::add('after_like_post', 'codolike_after_notify_insert'); // This runs just before item queue deletion
 //\CODOF\Hook::add('on_cron_notify_new_like', array(new \CODOF\Forum\Notification\Notifier, 'dequeueNotify'));
 
-dispatch("codolike/like", function(){
+dispatch_get("codolike/like", function(){
     $codoLikeAdapter = new CodoLikeAdapter();
     echo json_encode(codolike_add_like($codoLikeAdapter->get_user(), $_GET['id']));
 });
 
-dispatch("codolike/update", function(){
+dispatch_get("codolike/update", function(){
     $codoLikeAdapter = new CodoLikeAdapter();
     echo json_encode(codolike_get_likes($codoLikeAdapter->get_user()->id, $_GET['ids']));
 });
